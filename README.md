@@ -88,3 +88,5 @@ Run the application
 cd ~/Downloads
 ./isaacsim-webrtc-streaming-client-1.0.6-linux-x64.AppImage 
 ```
+
+Now the WebRTC-Nvidia container link is established. Make your packages and modification in the demo2_ws folder, which will be linked to the container and its applications.
