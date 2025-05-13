@@ -48,6 +48,11 @@ Make a working directory
 mkdir demo2_ws
 
 ```
+Create a folder to access the custom assets
+```bash
+mkdir isaacsim_assets
+
+```
 
 Add this to the build file
 
@@ -69,6 +74,7 @@ docker run --name isaac-sim --entrypoint bash -it --runtime=nvidia --gpus all -e
     -v ~/docker/isaac-sim/data:/root/.local/share/ov/data:rw \
     -v ~/docker/isaac-sim/documents:/root/Documents:rw \
     -v ~/isaac-sim-docker/demo2_ws:/isaac-sim/demo2_ws:rw \
+    -v ~/isaac-sim-docker/isaacsim_assets:/isaac-sim/isaacsim_assets:rw \
     isaacsim:nr
 ```
 
@@ -90,3 +96,7 @@ cd ~/Downloads
 ```
 
 Now the WebRTC-Nvidia container link is established. Make your packages and modification in the demo2_ws folder, which will be linked to the container and its applications.
+
+
+# Working with VS Code
+Open VS code and connect with the running container following this [instruction](https://learn.microsoft.com/en-us/visualstudio/docker/tutorials/docker-tutorial).
