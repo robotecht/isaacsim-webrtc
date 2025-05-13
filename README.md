@@ -131,8 +131,12 @@ exts."isaacsim.asset.browser".folders = [
   "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",
 ]
 ```
-
+Run IsaacSIm WebRTC with custom asset library added
 ```
 ./isaac-sim.streaming.sh --/persistent/isaac/asset_root/default="/isaac-sim/isaacsim_assets/Assets/Isaac/4.5" --allow-root
 
 ```
+
+Isaacsim WebRTC loaded with custom assets
+
+![alt text](image.png)
