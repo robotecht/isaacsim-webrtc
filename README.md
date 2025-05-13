@@ -82,7 +82,7 @@ Run the applicaion
 Download the Nvidia web rtc application from the [official website](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/manual_livestream_clients.html)
 
 
-Run the applicatopn
+Run the application
 
 ```bash
 cd ~/Downloads
