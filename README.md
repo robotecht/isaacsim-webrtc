@@ -25,11 +25,11 @@ FROM nvcr.io/nvidia/isaac-sim:4.5.0
 
 RUN apt-get update && apt-get -y upgrade
 
-# Add persistent asset browser config to isaacsim.exp.base.kit
+# Configure persistent asset paths
 RUN echo '[settings]' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
-    echo 'persistent.isaac.asset_root.default = "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo 'persistent.isaac.asset_root.default = "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
     echo 'exts."isaacsim.asset.browser".folders = [' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
-    echo '  "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo '  "/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
     echo ']' >> /isaac-sim/apps/isaacsim.exp.base.kit
 ```
 Build docker file
@@ -130,4 +130,9 @@ persistent.isaac.asset_root.default = "/home/isaac-sim/isaacsim_assets/Assets/Is
 exts."isaacsim.asset.browser".folders = [
   "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",
 ]
+```
+
+```
+./isaac-sim.streaming.sh --/persistent/isaac/asset_root/default="/isaac-sim/isaacsim_assets/Assets/Isaac/4.5" --allow-root
+
 ```
