@@ -1,5 +1,5 @@
 # isaacsim-webrtc
-Demo showing Isaac Sim hosted using the web client.
+Demo showing Nvidia Isaac Sim hosted using the web client.
 
 # Isaac Sim Container Installation
 
@@ -75,4 +75,16 @@ docker run --name isaac-sim --entrypoint bash -it --runtime=nvidia --gpus all -e
 Run the applicaion 
 ```bash
 ./run.sh
+```
+
+# WebRTC for GUI
+
+Download the Nvidia web rtc application from the [official website](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/manual_livestream_clients.html)
+
+
+Run the applicatopn
+
+```bash
+cd ~/Downloads
+./isaacsim-webrtc-streaming-client-1.0.6-linux-x64.AppImage 
 ```
