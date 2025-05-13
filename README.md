@@ -21,9 +21,16 @@ nano Dockerfile
 Add these contents into the docker file
 
 ```bash
-ROM nvcr.io/nvidia/isaac-sim:4.5.0
+FROM nvcr.io/nvidia/isaac-sim:4.5.0
 
 RUN apt-get update && apt-get -y upgrade
+
+# Add persistent asset browser config to isaacsim.exp.base.kit
+RUN echo '[settings]' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo 'persistent.isaac.asset_root.default = "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo 'exts."isaacsim.asset.browser".folders = [' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo '  "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",' >> /isaac-sim/apps/isaacsim.exp.base.kit && \
+    echo ']' >> /isaac-sim/apps/isaacsim.exp.base.kit
 ```
 Build docker file
 
@@ -78,6 +85,11 @@ docker run --name isaac-sim --entrypoint bash -it --runtime=nvidia --gpus all -e
     isaacsim:nr
 ```
 
+Build the application
+```bash
+./build.sh
+```
+
 Run the applicaion 
 ```bash
 ./run.sh
@@ -100,3 +112,22 @@ Now the WebRTC-Nvidia container link is established. Make your packages and modi
 
 # Working with VS Code
 Open VS code and connect with the running container following this [instruction](https://learn.microsoft.com/en-us/visualstudio/docker/tutorials/docker-tutorial).
+
+# Run Isaac Sim with WebRTC
+
+```bash
+./isaac-sim.streaming.sh --allow-root 
+```
+
+# Custom Assets
+Edit the isaac sim file available in /isaac-sim/apps/isaacsim.exp.base.kit
+
+Add the following code to create a custom project folder
+
+```
+[settings]
+persistent.isaac.asset_root.default = "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5"
+exts."isaacsim.asset.browser".folders = [
+  "/home/isaac-sim/isaacsim_assets/Assets/Isaac/4.5/Isaac/Projects",
+]
+```
