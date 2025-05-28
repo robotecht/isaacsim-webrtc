@@ -58,8 +58,8 @@ RUN apt install -y \
 
 
 # Create workspace and set working directory
-RUN mkdir -p /ros2_humble/src
-WORKDIR /ros2_humble
+RUN mkdir -p /root/ros2_humble/src
+WORKDIR /root/ros2_humble
 
 # Fetch ROS 2 repo file and import into src
 RUN curl -sSL https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos -o ros2.repos && \
@@ -80,3 +80,6 @@ RUN apt install libbrotli1=1.0.9-2build6 --allow-downgrades -y
 # 🔥 rosdep and build will now work — we're in /ros2_humble and src exists
 RUN rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 RUN colcon build --symlink-install
+
+WORKDIR /isaac-sim
+
